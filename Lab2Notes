@@ -1,0 +1,62 @@
+from dataclasses import dataclass
+@dataclass
+
+class Student:
+    
+	name: str
+    
+	school_id: str
+    
+	gpa: float
+
+    def __str__(self):
+      
+	return f'Name: {self.name}, GPA: {self.gpa}'
+
+alex = Student('Alex', 'abcdef', 3.5)
+  
+cloe = Student('Cloe', 'iadkic', 3.7)
+  
+  
+print(alex)
+  
+print(chloe)
+
+main()
+
+
+class Author:
+  
+	def __intit__(self, name):
+    
+		self.name = name
+    
+		self.books = []
+  
+  
+
+	def publish(self, title):
+    
+		self.books.append(title)
+    
+  
+
+	def __str__(self):
+      
+	book_list = ', '.join(self.books) or 'No Books'
+    
+		return f'Name: {self.name}. Books Published: {book_list}'
+    
+
+kurt = Author('Kurt')
+
+kurt.publish('Slaughter House Five')
+
+kurt.publish('Cats Craddle')
+
+
+eric = Author('Eric')
+
+print(kurt)
+
+print(eric)
