@@ -1,15 +1,22 @@
-
-
-sentence = input('What would you like to make camelCase?')
-wordList = sentence.split()
 capWords = []
+def camel_case(sentence):
+    
+    wordList = sentence.split()
+    for word in wordList:
+        capWords.append(word.title())
 
-for word in wordList:
-    capWords.append(word.title())
+    camelCase = ' '.join(capWords).replace(' ', '')
+    finSentence = camelCase[0].lower() + camelCase[1:]
 
+    return finSentence
 
-camelCase = ' '.join(capWords).replace(' ', '')
-finWord = camelCase[0].lower() + camelCase[1:]
-print(finWord)
+def main():
+    
+    sentence = input('What would you like to make camelCase?')
+    camelCase = camel_case(sentence)
+    print(camelCase)
+
+if __name__ == '__main__':
+    main()
 
 
