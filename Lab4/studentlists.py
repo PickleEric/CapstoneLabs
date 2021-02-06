@@ -17,8 +17,8 @@ class ClassList:
         self.class_list = []
         self.max_students = max_students
 
-        if self.max_students <= 0:
-            raise StudentError("Please use a positive number")
+        if self.max_students < 0:
+            raise StudentError
 
         # TODO raise an exception - StudentError - if max_students is zero or negative. 
         # Write test to confirm.
@@ -57,9 +57,12 @@ class ClassList:
 
     ## TODO add a method called is_class_full.
     # This should return True or False to indicate if the class is full.
-    def is_class_full(self,max_students):
+    def is_class_full(self, max_students):
         while self.class_list == max_students:
             return True
+        else:
+            return False 
+
 
     def __str__(self):
         return ", ".join(self.class_list)
