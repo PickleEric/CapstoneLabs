@@ -27,3 +27,11 @@ class TestCamelCase(TestCase):
         result = camelCase.camel_case(bad_string)
 
         self.assertTrue(result)
+    
+    def test_if_numbers_work(self):
+        bad_string = 'lets test 3 numbers and see 123'
+
+        result = camelCase.camelcase(bad_string)
+
+        self.assertTrue(result)
+        
