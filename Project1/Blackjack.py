@@ -129,7 +129,7 @@ class Table:
         game_end = False
         while not game_end:
             # call who the winner is
-            player_has_blackjack, dealer_has_blackjack = self.check_for_winner() 
+            self.player_has_blackjack, self.dealer_has_blackjack = self.check_for_winner() 
         # creat play again input
         again = input('Play again? (Y/N) ')
         while again.lower() not in ['y', 'n']:
@@ -147,18 +147,21 @@ class Table:
             player = True
         if self.dealer_hand.get_value() == 21:
             dealer = True
-        return player, dealer
-        if player_has_blackjack or dealer_has_blackjack:
+        if self.player_has_blackjack or self.dealer_has_blackjack:
             game_end = True
-            self.show_results(player_has_blackjack, dealer_has_blackjack)
+        self.show_results(self.player_has_blackjack, self.dealer_has_blackjack)
+        return player, dealer
+        
     # Show the results 
-    def show_results(self, player_has_blackjack, dealer_has_blackjack):
-        if player_has_blackjack and dealer_has_blackjack:
+    def show_results(self):
+
+        if self.player_has_blackjack and self.dealer_has_blackjack:
             print('DRAW!')
-        elif player_has_blackjack:
+        elif self.player_has_blackjack:
             print('You are winner!')
-        elif dealer_has_blackjack:
+        elif self.dealer_has_blackjack:
             print('You lose!')
+        
     def game_end(self): # end game this does not run
         return self.player_hand.get_value() > 21
 # call MAIN
