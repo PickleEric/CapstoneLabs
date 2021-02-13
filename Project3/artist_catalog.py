@@ -88,10 +88,10 @@ def create_new_artwork():
  
 def update_availability():
     updated_availability = input('Change availability:')
-    update_artwork = ('What ')
+    update_artwork = input('What artwork would you like to update? ')
  
     with sqlite3.connect(db) as conn:
-        conn.execute('UPDATE track_artwork SET name = ? WHERE id = ? ', (updated_product, update_id))
+        conn.execute('UPDATE track_artwork SET available = ? WHERE artwork = ? ', (updated_availability, update_artwork))
  
     conn.close()
  
