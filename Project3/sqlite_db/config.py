@@ -1,0 +1,1 @@
+db = 'artist_artwork_db.sqlite'
