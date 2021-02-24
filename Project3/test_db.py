@@ -65,6 +65,27 @@ class TestDB(TestCase):
 
         self.assertCountEqual(expected_row, actual_row)
 
+    def test_delete_from_database(self):
+        fake_artist = Artist('Jon Louis')
+        deleted = db.delete_artist(fake_artist)
+
+        self.assertTrue(deleted)
+
+        
+    def test_duplicate_artist(self):
+        fake_artist = Artist('Jon Louis', 'Jlouis@gmail.com')
+        fake_artist0 = Artist('Jon Louis', 'Jlouis@yahoo.com')
+
+        added = db.create_new_artist(fake_artist)
+        added0 = db.create_new_artist(fake_artist0)
+
+        self.assertFalse(added0)
+
+        expected_row = [('Jon Louis', 'Jlouis@gmail.com')]
+        actual_row = self.get_all_data()
+        
+        self.assertEqual(expected_row, actual_row)
+
     def get_all_data(self):
         with sqlite3.connect('test_catalog.sqlite') as conn:
             rows = conn.execute('SELECT * FROM artists').fetchall()

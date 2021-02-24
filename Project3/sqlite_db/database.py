@@ -53,7 +53,7 @@ def search_artwork(artwork):
     else:
         print('Not found')
     conn.close()
-    
+
 def update_availability(artwork):
  
     with sqlite3.connect(db) as conn:
