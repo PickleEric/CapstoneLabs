@@ -54,7 +54,7 @@ class TestStudentLists(TestCase):
     ## TODO write a test that removes a student from an 
     # empty list, and asserts a StudentError is raised
     def test_remove_student_from_empty_list_show_error(self):
-        test_class = ClassList(0)
+        test_class = ClassList(1)  # ClassList should allow at least one student
 
         with self.assertRaises(StudentError):
             test_class.remove_student('Jim')
@@ -115,7 +115,7 @@ class TestStudentLists(TestCase):
     # Assert index_of_student returns None for a student if the list is empty. 
     # use assertIsNone.
     def test_index_of_student_if_class_list_is_empty(self):
-        test_class = ClassList(0)
+        test_class = ClassList(1)  # at least one student
         self.assertIsNone(test_class.index_of_student(0))
  
     ## TODO write another test for index_of_student. In the case when the 
@@ -135,14 +135,23 @@ class TestStudentLists(TestCase):
     # use assertTrue.
     def test_if_class_is_full_method(self):
         test_class = ClassList(5)
+        # add 5 students
+        test_class.add_student('a')
+        test_class.add_student('b')
+        test_class.add_student('c')
+        test_class.add_student('d')
+        test_class.add_student('e')
 
+        # now expect class to be full
         result = test_class.is_class_full()
 
         self.assertTrue(result)
+
+
     ## TODO write a test for your new is_class_full method for when is empty, 
     # and when it is not full. Use assertFalse.
     def test_if_class_is_empty_method(self):
-        test_class = ClassList(0)
+        test_class = ClassList(1)   # shouldn't be allowed to make a class with max 0 students 
 
         result = test_class.is_class_full()
 
