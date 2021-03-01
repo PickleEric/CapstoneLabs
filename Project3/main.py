@@ -1,6 +1,5 @@
 from model import *
-from sqlite_db.database import *
-from sqlite_db.config import db
+from sqlite_db import database as db
 
 def main():
     setup()
@@ -31,18 +30,21 @@ def create_artwork():
         print('Artwork added')
     else:
         print('Artwork already exists')
+
 def search_artist():
     name = input('What artist would you like to find?')
     find_artist = db.search_artist(name)
     if find_artist == None:
         print('Artist not found try again')
     return
+
 def search_artwork():
     artwork_name = input('What artwork are you looking for?')
     find_artwork = db.search_artwork(artwork_name)
     if find_artwork == None:
         print('artwork not found')
     return
+
 def update_available():
     updated_availability = input('Change availability:')
     update_artwork = input('What artwork would you like to update? ')
@@ -50,6 +52,7 @@ def update_available():
     if updated == None:
         print('Cant update no such artwork or artist')
     return
+
 def delete_artist_artwork():
     find_artist = input('What artist would you like to delete?')
     deleted = db.delete_artist(find_artist)
@@ -70,7 +73,7 @@ def menu_view():
         print('5 update artwork avaiabilty')
         print('6 delete selected artist and artwork')
         print('7 quit')
-        choice = int(input('What would you like to do?'))
+        choice = input('What would you like to do?')  # if you compare to strings on the following lines, keep this as string
 
         if choice == "1":
             create_artist()

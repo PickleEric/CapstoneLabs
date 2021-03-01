@@ -5,8 +5,8 @@ from .config import db
 def create_table():
     try:
         with sqlite3.connect(db) as conn:  
-            conn.execute('CREATE TABLE IF NOT EXISTS artists (artist_name text, email text, unique( artist_name COLLATE NOCASE, email COLLATE NOCASE)')
-            conn.execute('CREATE TABLE IF NOT EXISTS track_artwork (artist_name text, artwork text, price int, availability boolean, track_id int, unique( artist COLLATE NOCASE, artwork COLLATE NOCASE, foreign key(trackid) references artist(artist_name)')
+            conn.execute('CREATE TABLE IF NOT EXISTS artists (artist_name text, email text, unique( artist_name COLLATE NOCASE, email COLLATE NOCASE))')
+            conn.execute('CREATE TABLE IF NOT EXISTS track_artwork (artist_name text, artwork text, price int, availability boolean, track_id int, unique(artwork COLLATE NOCASE), foreign key(track_id) references artist(artist_name))')
         
     except Exception as e:
         print('Could not create table ERROR!', e)
